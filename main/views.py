@@ -1,5 +1,6 @@
 import os.path
 import subprocess
+import sys
 import traceback
 from pathlib import Path
 
@@ -32,7 +33,7 @@ def calculator(request):
         try:
             jar_path = './temp-1.0-SNAPSHOT'
             subprocess.call("chmod +x " + str(Path(jar_path).absolute()), shell=True)
-            result_bytes = subprocess.check_output(str(Path(jar_path).absolute()) + " " + expression, shell=True)
+            result_bytes = subprocess.check_output([str(Path(jar_path).absolute()), expression], stderr=sys.stderr)
             result = result_bytes.decode('utf-8').strip()
         except (Exception,):
             traceback.print_exc()
