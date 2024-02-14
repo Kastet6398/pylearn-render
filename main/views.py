@@ -31,7 +31,8 @@ def calculator(request):
         expression = request.POST.get('expression', '')
         try:
             jar_path = './temp-1.0-SNAPSHOT'
-            result_bytes = subprocess.check_output([str(jar_path), expression])
+            subprocess.call("chmod +x " + str(Path(jar_path).absolute()), shell=True)
+            result_bytes = subprocess.check_output([str(Path(jar_path).absolute()), expression])
             result = result_bytes.decode('utf-8').strip()
         except (Exception,):
             traceback.print_exc()
