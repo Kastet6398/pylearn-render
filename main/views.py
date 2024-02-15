@@ -28,7 +28,7 @@ def calculator(request):
     if request.method == 'POST':
         expression = request.POST.get('expression', '')
         result = "INTERNAL ERROR (500)"
-        if 0 < len(expression) < 10000:
+        if 0 < len(expression) < 2048:
             try:
                 jar_path = './calculator'
                 subprocess.call("chmod +x " + str(Path(jar_path).absolute()), shell=True)
