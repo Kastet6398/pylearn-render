@@ -1,4 +1,3 @@
-import os.path
 import subprocess
 import sys
 import traceback
@@ -9,8 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http import JsonResponse, HttpResponseForbidden
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views.generic import CreateView
 
 from .forms import HomeWorkForm
 from .models import Course, Theme, Test, Attachment, HomeWork
@@ -30,14 +27,15 @@ def calculator(request):
     result = None
     if request.method == 'POST':
         expression = request.POST.get('expression', '')
-        try:
-            jar_path = './calculator'
-            subprocess.call("chmod +x " + str(Path(jar_path).absolute()), shell=True)
-            result_bytes = subprocess.check_output([str(Path(jar_path).absolute()), expression], stderr=sys.stderr)
-            result = result_bytes.decode('utf-8').strip()
-        except (Exception,):
-            traceback.print_exc()
-            result = "INTERNAL ERROR (500)"
+        result = "INTERNAL ERROR (500)"
+        if 0 < len(expression) < 10000:
+            try:
+                jar_path = './calculator'
+                subprocess.call("chmod +x " + str(Path(jar_path).absolute()), shell=True)
+                result_bytes = subprocess.check_output([str(Path(jar_path).absolute()), expression], stderr=sys.stderr)
+                result = result_bytes.decode('utf-8').strip()
+            except (Exception,):
+                traceback.print_exc()
 
     return render(request, 'main/calculator.html', {'result': result})
 
