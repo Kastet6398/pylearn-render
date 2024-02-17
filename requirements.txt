@@ -10,3 +10,4 @@ djangorestframework
 django_admin_site_search
 cloudinary
 requests
+whitenoise

@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     # 'adminlte3',
     'main',
     'corsheaders',
+    'whitenoise',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
