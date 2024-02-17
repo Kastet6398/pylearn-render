@@ -5,28 +5,6 @@ input[type="submit"], button {
     appearance: none;
 }
 
-
-    #content-related {
-        margin-right: -290px;
-    }
-
-    .colSM #content-related {
-        margin-left: -290px;
-    }
-
-    .colMS {
-        margin-right: 290px;
-    }
-
-    .colSM {
-        margin-left: 290px;
-    }
-
-    .dashboard #content {
-        width: auto;
-    }
-
-
 @media (max-width: 1024px) {
     /* Basic */
 
@@ -36,11 +14,11 @@ input[type="submit"], button {
 
     td, th {
         padding: 10px;
-        font-size: 14px;
+        font-size: 0.875rem;
     }
 
     .small {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 
     /* Layout */
@@ -50,7 +28,7 @@ input[type="submit"], button {
     }
 
     #content {
-        padding: 20px 30px 30px;
+        padding: 15px 20px 20px;
     }
 
     div.breadcrumbs {
@@ -67,7 +45,6 @@ input[type="submit"], button {
 
     #branding h1 {
         margin: 0 0 8px;
-        font-size: 20px;
         line-height: 1.2;
     }
 
@@ -85,14 +62,34 @@ input[type="submit"], button {
 
     /* Dashboard */
 
-    td .changelink, td .addlink {
-        font-size: 13px;
+    .dashboard #content {
+        width: auto;
     }
 
+    #content-related {
+        margin-right: -290px;
+    }
+
+    .colSM #content-related {
+        margin-left: -290px;
+    }
+
+    .colMS {
+        margin-right: 290px;
+    }
+
+    .colSM {
+        margin-left: 290px;
+    }
 
     .dashboard .module table td a {
         padding-right: 0;
     }
+
+    td .changelink, td .addlink {
+        font-size: 0.8125rem;
+    }
+
     /* Changelist */
 
     #toolbar {
@@ -133,10 +130,6 @@ input[type="submit"], button {
         padding: 15px 0;
     }
 
-    #changelist .actions.selected {
-        border: none;
-    }
-
     #changelist .actions label {
         display: flex;
     }
@@ -154,7 +147,7 @@ input[type="submit"], button {
     #changelist .actions span.clear,
     #changelist .actions span.question,
     #changelist .actions span.action-counter {
-        font-size: 11px;
+        font-size: 0.6875rem;
         margin: 0 10px 0 0;
     }
 
@@ -178,7 +171,7 @@ input[type="submit"], button {
     /* Forms */
 
     label {
-        font-size: 14px;
+        font-size: 0.875rem;
     }
 
     .form-row input[type=text],
@@ -194,7 +187,7 @@ input[type="submit"], button {
         margin: 0;
         padding: 6px 8px;
         min-height: 36px;
-        font-size: 14px;
+        font-size: 0.875rem;
     }
 
     .form-row select {
@@ -236,6 +229,22 @@ input[type="submit"], button {
 
     form .aligned div.radiolist {
         margin-left: 2px;
+    }
+
+    .submit-row {
+        padding: 8px 8px 3px 8px;
+    }
+
+    .submit-row a.deletelink {
+        padding: 10px 7px;
+    }
+
+    .submit-row input.default {
+        margin: 0 0 5px 5px;
+    }
+
+    .button, input[type=submit], input[type=button], .submit-row input, a.button {
+        padding: 7px;
     }
 
     /* Related widget */
@@ -395,12 +404,12 @@ input[type="submit"], button {
     }
 
     .datetime span {
-        font-size: 13px;
+        font-size: 0.8125rem;
     }
 
     .datetime .timezonewarning {
         display: block;
-        font-size: 11px;
+        font-size: 0.6875rem;
         color: var(--body-quiet-color);
     }
 
@@ -464,38 +473,10 @@ input[type="submit"], button {
     }
 }
 
-@media (max-width: 1100px) {
-
-    .colSM {
-    width: 900px;}
-    #content-related, .colSM #content-related {
-        width: 100%;
-        margin: 0;
-    }
-
-    .colMS, .colSM {
-        margin: 0;
-    }
-    #content-related .module {
-        margin-bottom: 0;
-    }
-
-    #content-related .module h2 {
-        padding: 10px 15px;
-        font-size: 16px;
-    }}
-
 /* Mobile */
 
 @media (max-width: 767px) {
-#nav-sidebar {
-    position: inherit;
-    }
     /* Layout */
-    #container > .main {
-    display: block !important;
-    width: 99%;
-    }
 
     #header, #content, #footer {
         padding: 15px;
@@ -509,6 +490,25 @@ input[type="submit"], button {
         padding: 10px 15px;
     }
 
+    /* Dashboard */
+
+    .colMS, .colSM {
+        margin: 0;
+    }
+
+    #content-related, .colSM #content-related {
+        width: 100%;
+        margin: 0;
+    }
+
+    #content-related .module {
+        margin-bottom: 0;
+    }
+
+    #content-related .module h2 {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
 
     /* Changelist */
 
@@ -633,7 +633,7 @@ input[type="submit"], button {
 
     .aligned p.file-upload {
         margin-left: 0;
-        font-size: 13px;
+        font-size: 0.8125rem;
     }
 
     span.clearable-file-input {
@@ -641,7 +641,7 @@ input[type="submit"], button {
     }
 
     span.clearable-file-input label {
-        font-size: 13px;
+        font-size: 0.8125rem;
         padding-bottom: 0;
     }
 
@@ -823,7 +823,7 @@ input[type="submit"], button {
     /* Submit row */
 
     .submit-row {
-        padding: 10px 10px 0;
+        padding: 10px 10px 5px;
         margin: 0 0 15px;
         display: flex;
         flex-direction: column;
@@ -918,7 +918,7 @@ input[type="submit"], button {
     .errornote {
         margin: 0 0 20px;
         padding: 8px 12px;
-        font-size: 13px;
+        font-size: 0.8125rem;
     }
 
     /* Calendar and clock */
@@ -965,7 +965,7 @@ input[type="submit"], button {
 
     .calendar-shortcuts {
         padding: 10px 0;
-        font-size: 12px;
+        font-size: 0.75rem;
         line-height: 12px;
     }
 
@@ -998,7 +998,7 @@ input[type="submit"], button {
     /* History */
 
     table#change-history tbody th, table#change-history tbody td {
-        font-size: 13px;
+        font-size: 0.8125rem;
         word-break: break-word;
     }
 
@@ -1009,10 +1009,7 @@ input[type="submit"], button {
     /* Docs */
 
     table.model tbody th, table.model tbody td {
-        font-size: 13px;
+        font-size: 0.8125rem;
         word-break: break-word;
     }
 }
-
-@media (max-width: 500px) {
-video,iframe{width: 90%;}}
