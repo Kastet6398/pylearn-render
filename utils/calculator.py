@@ -8,7 +8,7 @@ import time
 def calculate(expr: str):
     expr = expr.lower()
     while re.findall(r"\)([\d]+)", expr) or re.findall(r"(?<!\w)j(?!\w)", expr) \
-            or re.findall(r"([\d)])i", expr) \
+            or re.findall(r"([\d)])i", expr) or re.findall(r"([\w)])\(", expr) \
             or re.findall(r"(?<!\w)i(?!\w)", expr) or re.findall(r"(?<!\w)pi(?!\w)", expr) \
             or re.findall(r"(?<!\w)pi(?!\w)", expr) or re.findall(r"(?<!\w)e(?!\w)", expr) \
             or re.findall(r"([\d)])([a-ik-z]+)", expr):
