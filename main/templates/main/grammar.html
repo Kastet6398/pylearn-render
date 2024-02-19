@@ -1,0 +1,19 @@
+{% extends "main/base_site.html" %}
+
+{% block title %}Grammar and punctuation correcter{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Grammar and punctuation correcter</h2>
+    <form onsubmit="checkGrammar();event.preventDefault()">
+        <div class="form-group">
+            <label for="text">
+                Your text: <textarea id="text" required></textarea>
+            </label>
+            <pre id="issues"></pre>
+        </div>
+        <button type="submit">Correct</button>
+    </form>
+</div>
+<script src="/static/main/grammar.js" defer></script>
+{% endblock %}

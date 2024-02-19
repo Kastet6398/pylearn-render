@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import path, re_path
 
 from .views import admin3, courses, themes, test, check, update, download, admin2, control_test, check_control, \
-    calculator, keep_alive, theme, embed
+    calculator, keep_alive, theme, embed, grammar
 
 urlpatterns = [
     re_path(r'^/*$', courses, name='index'),
@@ -29,6 +29,7 @@ urlpatterns = [
     path('check/<int:object_id>/', check),
     path('check-control/<int:object_id>/', check_control),
     path('update/', update),
+    path('grammar/', grammar),
     re_path(r'^admin2/(?P<slug>.*)/$', admin2),
     path('admin2/', admin3),
     path('download/', download),

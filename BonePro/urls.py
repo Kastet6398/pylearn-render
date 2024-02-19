@@ -18,12 +18,14 @@ from django.urls import path, include
 
 import accounts.urls
 import accounts.views
+import api.urls
 import main.urls
 from django.contrib import admin
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include(api.urls)),
     path('', include(main.urls)),
     path('accounts/', include(accounts.urls)),
 ]

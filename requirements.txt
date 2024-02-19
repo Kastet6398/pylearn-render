@@ -8,6 +8,7 @@ sentry-sdk[django]
 django_cloudinary_storage
 djangorestframework
 django_admin_site_search
-cloudinary
+cloudinary~=1.38.0
 requests
 whitenoise
+sympy~=1.12

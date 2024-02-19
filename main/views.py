@@ -1,7 +1,4 @@
-import subprocess
-import sys
 import traceback
-from pathlib import Path
 
 import cloudinary
 from django.contrib.auth.decorators import login_required
@@ -9,6 +6,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse, HttpResponseForbidden
 from django.shortcuts import render, redirect
 
+from utils.calculator import calculate
 from .forms import HomeWorkForm
 from .models import Course, Theme, Test, Attachment, HomeWork
 
@@ -19,21 +17,15 @@ cloudinary.config(
 )
 
 
-def ggg(request):
-    return render(request, 'main/ggg.html', {})
-
-
 def calculator(request):
     result = None
     if request.method == 'POST':
-        expression = request.POST.get('expression', '')
+        expression: str = request.POST.get('expression', '')
+
         result = "INTERNAL ERROR (500)"
-        if 0 < len(expression) < 2048:  # I really like that game!
+        if 0 < len(expression) < 2048:
             try:
-                jar_path = './calculator'
-                subprocess.call("chmod +x " + str(Path(jar_path).absolute()), shell=True)
-                result_bytes = subprocess.check_output([str(Path(jar_path).absolute()), expression], stderr=sys.stderr)
-                result = result_bytes.decode('utf-8').strip()
+                result = calculate(expression)
             except (Exception,):
                 traceback.print_exc()
 
@@ -53,6 +45,10 @@ def courses(request):
         'courses': retrieved_courses
     }
     return render(request, "main/courses.html", context)
+
+
+def grammar(request):
+    return render(request, "main/grammar.html", {})
 
 
 @login_required
