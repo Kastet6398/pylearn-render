@@ -3,23 +3,28 @@ import traceback
 from django.http import JsonResponse
 
 from utils.calculator import calculate
+from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt
 def calculator(request):
-    if request.method == 'POST':
-        expression: str = request.POST.get('expression', '')
+    try:
+        if request.method == 'POST':
+            expression: str = request.POST.get('expression', '')
 
-        result = "INTERNAL ERROR (500)"
-        if 0 < len(expression) < 2048:
-            try:
-                result = calculate(expression)
-            except (Exception,):
-                traceback.print_exc()
+            result = "INTERNAL ERROR (500)"
+            if 0 < len(expression) < 2048:
+                try:
+                    result = calculate(expression)
+                except (Exception,):
+                    traceback.print_exc()
+            return JsonResponse({
+                "result": result,
+                "success": result != "INTERNAL ERROR (500)"
+            })
         return JsonResponse({
-            "result": result,
-            "success": result != "INTERNAL ERROR (500)"
+            "error": "badRequestMethod",
+            "success": False
         })
-    return JsonResponse({
-        "error": "badRequestMethod",
-        "success": False
-    })
+    except:
+        traceback.print_exc()
