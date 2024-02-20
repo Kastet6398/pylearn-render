@@ -11,6 +11,7 @@ def calculator(request):
     try:
         if request.method == 'POST':
             expression: str = request.POST.get('expression', '')
+            print(expression)
 
             result = "INTERNAL ERROR (500)"
             if 0 < len(expression) < 2048:
