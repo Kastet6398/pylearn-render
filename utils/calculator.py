@@ -9,7 +9,7 @@ def calculate(expr: str):
     expr = expr.lower()
     while re.findall(r"\)([\d]+)", expr) or re.findall(r"(?<!\w)j(?!\w)", expr) \
             or re.findall(r"([\d)])i(?!\w)", expr) \
-            or re.findall(r"(?<!\w)i(?!\w)", expr) or re.findall(r"(?<!\w)c(?!\w)", expr) or re.findall(r"(?<!\w)e(?!\w)", expr) \
+            or re.findall(r"(?<!\w)i(?!\w)", expr) or re.findall(r"(?<!\w)e(?!\w)", expr) \
             or re.findall(r"([\d)])([a-ik-z]+)", expr):
 
         expr = re.sub(r"([\d)])i(?!\w)", "\\1*1j", expr)
@@ -21,8 +21,6 @@ def calculate(expr: str):
         expr = re.sub(r"\)([\d]+)", ")*\\1", expr)
         print(expr)
         expr = re.sub(r"(?<!\w)j(?!\w)", "1j", expr)
-        print(expr)
-        expr = re.sub(r"(?<!\w)c(?!\w)", "299792458", expr)
         print(expr)
         expr = re.sub(r"(?<!\w)e(?!\w)", str(math.e), expr)
         print(expr)
