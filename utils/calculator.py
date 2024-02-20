@@ -7,12 +7,13 @@ import sympy
 def calculate(expr: str):
     expr = expr.lower()
     while re.findall(r"([a-zA-Z)]+(?<!sin)(?<!cos)(?<!tan)(?<!acos)(?<!asin)(?<!atan)(?<!cot)(?<!acot)(?<!sinc)("
-                     r"?<!sinh)(?<!asinh)(?<!acosh)(?<!cosh)(?<!tanh)(?<!cotanh)(?<!atanh)(?<!acoth))\(",
+                     r"?<!sinh)(?<!asinh)(?<!acosh)(?<!abs)(?<!cosh)(?<!tanh)(?<!cotanh)(?<!atanh)(?<!acoth))\(",
                      expr) or re.findall(r"\)([\d]+)", expr) or re.findall(r"(?<!\w)j(?!\w)", expr) \
             or re.findall(r"([\d)])i", expr) \
             or re.findall(r"(?<!\w)i(?!\w)", expr) \
             or re.findall(r"([\d)])([a-ik-z]+)", expr):
-        expr = re.sub(r"([a-zA-Z)]+(?<!sin)(?<!cos)(?<!tan)(?<!acos)(?<!asin)(?<!atan)(?<!cot)(?<!acot)(?<!sinc)("
+        expr = re.sub(r"([a-zA-Z)]+(?<!sin)(?<!abs)(?<!cos)(?<!tan)(?<!acos)(?<!asin)(?<!atan)(?<!cot)(?<!acot)("
+                      r"?<!sinc)("
                       r"?<!sinh)(?<!asinh)(?<!acosh)(?<!cosh)(?<!tanh)(?<!cotanh)(?<!atanh)(?<!acoth))\(", "\\1*(",
                       expr)
         print(expr)
@@ -20,7 +21,7 @@ def calculate(expr: str):
         print(expr)
         expr = re.sub(r"([\d)])\(", "\\1(", expr)
         print(expr)
-        expr = re.sub(r"([\d)])(?!(sin|cos|tan|acos|asin|atan|cot|acot|sinc|sinh|asinh|acosh|cosh|tanh|cotanh|atanh"
+        expr = re.sub(r"([\d)])(?!(sin|cos|abs|tan|acos|asin|atan|cot|acot|sinc|sinh|asinh|acosh|cosh|tanh|cotanh|atanh"
                       r"|acoth)\b)([a-ik-z]+)", "\\1*\\3", expr)
         print(expr)
         expr = re.sub(r"\)([\d]+)", ")*\\1", expr)
