@@ -33,6 +33,9 @@ def calculate(expr: str):
         expr = re.sub(r"([\d)])([a-ik-z]+)", "\\1*\\2", expr)
         print(expr)
         print(2222222)
-    result = sympy.simplify(expr).evalf()
-    print(result)
-    return str(result)
+    try:
+        result = sympy.simplify(expr).evalf()
+        print(result)
+        return str(result)
+    except:
+        return "Error"
