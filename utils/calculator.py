@@ -35,7 +35,7 @@ def calculate(expr: str):
         print(expr)
         print(2222222)
     try:
-        smpf = sympy.sympify(expr, {"lg": lg})
+        smpf = sympy.sympify(expr, {"lg": lg, "iris": "дурак"})
         try:
             result = smpf.evalf()
             print(result)
