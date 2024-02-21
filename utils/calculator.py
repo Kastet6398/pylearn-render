@@ -1,17 +1,17 @@
+import builtins
 import math
 import re
 import time
 import traceback
 
 import sympy
-
+import ast
 
 def lg(x):
     return math.log10(x)
 
 
 def calculate(expr: str):
-    expr = expr.lower()
     while re.findall(r"\)([\d]+)", expr) or re.findall(r"(?<!\w)j(?!\w)", expr) \
             or re.findall(r"([\d)])i(?!\w)", expr) \
             or re.findall(r"(?<!\w)i(?!\w)", expr) or re.findall(r"(?<!\w)e(?!\w)", expr) \
@@ -35,7 +35,10 @@ def calculate(expr: str):
         print(expr)
         print(2222222)
     try:
-        smpf = sympy.sympify(expr, {"lg": lg, "iris": "дурак"})
+        localz = {"exec": None, "eval": None, "lg": lg, "iris": "дурак", "__builtins__": None}
+        for i in dir(builtins):
+            localz[i] = None
+        smpf = sympy.sympify(expr, localz)
         try:
             result = smpf.evalf()
             print(result)
