@@ -12,6 +12,8 @@ def lg(x):
 
 
 def calculate(expr: str):
+    if "кто умеет считать" in expr.lower():
+        return "Я умею считать!"
     while re.findall(r"\)([\d]+)", expr) or re.findall(r"(?<!\w)j(?!\w)", expr) \
             or re.findall(r"([\d)])i(?!\w)", expr) \
             or re.findall(r"(?<!\w)i(?!\w)", expr) or re.findall(r"(?<!\w)e(?!\w)", expr) \
