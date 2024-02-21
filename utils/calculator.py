@@ -1,8 +1,13 @@
 import math
 import re
 import time
+import traceback
 
 import sympy
+
+
+def lg(x):
+    return math.log10(x)
 
 
 def calculate(expr: str):
@@ -30,8 +35,15 @@ def calculate(expr: str):
         print(expr)
         print(2222222)
     try:
-        result = sympy.simplify(expr).evalf()
-        print(result)
-        return str(result)
+        smpf = sympy.sympify(expr, {"lg": lg})
+        try:
+            result = smpf.evalf()
+            print(result)
+            return str(result)
+        except AttributeError:
+            result = smpf
+            print(result)
+            return str(result)
     except:
+        traceback.print_exc()
         return "Error"
