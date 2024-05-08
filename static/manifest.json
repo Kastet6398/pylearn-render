@@ -2,7 +2,7 @@
   "name": "Py Learn",
   "short_name": "Py Learn",
   "description": "Py Learn - an innovative online learning management system.",
-  "start_url": "/themes/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#212529",
   "theme_color": "#212529",
